@@ -58,7 +58,7 @@ for(let i = 0; i < addBtn.length; i++)
             tg.MainButton.hide();
         } else {
             tg.MainButton.setText("Выбрано товаров: " + sum);
-            console.log("Выбрано товаров: " + sum);
+            console.log("Выбрано товаров: " + sum + ", общая сумма: " + sum);
             if(!tg.MainButton.isVisible) tg.MainButton.show();
         }
     };
@@ -79,7 +79,7 @@ for(let i = 0; i < addBtn.length; i++)
             tg.MainButton.hide();
         } else {
             tg.MainButton.setText("Выбрано товаров: " + sum);
-            console.log("Выбрано товаров: " + sum);
+            console.log("Выбрано товаров: " + sum + ", общая сумма: " + sum);
             if(!tg.MainButton.isVisible) tg.MainButton.show();
         }
     };
