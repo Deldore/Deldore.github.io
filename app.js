@@ -40,6 +40,7 @@ for(let i = 0; i < addBtn.length; i++)
     };
     subBtn[i].onclick = function () {
         product[i]--;
+        value[i].innerHTML = product[i];
         if (!product[i]) {
             addBtn[i].innerHTML = "Купить";
             subBtn[i].style.display = "none";
