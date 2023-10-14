@@ -8,59 +8,116 @@
     src: url(Roboto-Thin.ttf);
 }
 
+@font-face {
+    font-family: 'FontName Medium';
+    src: url(Roboto-Medium.ttf);
+}
+
 
 body {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none;
+    user-select: none;
     margin: 0;
     font-size: 18px;
     padding: 6px;
     color: var(--tg-theme-text-color);
-    background: var(--tg-theme-bg-color);
-    user-select: none;
+    /*background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(255, 255, 255) 27.8%, rgb(43, 44, 44) 110.2%);*/
     font-family: 'FontName';
-    background-image: url("bg.jpg");
-    /*background-position: center;*/
-    /*background-size: 2400px 482px;*/
-    background-size: 1200px 241px;
-}
-.container {
     max-width: 390px;
+    background: #FFF;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("bg.jpg");
+    /*!*background-size: 2400px 482px;*!*/
+    /*background-size: 1200px 241px;*/
+}
+
+.container {
+    max-width: 380px;
+    min-width: 380px;
 }
 .inner {
     display: grid;
-    grid-template-columns: 190px 190px;
-    grid-template-rows: 210px 210px 210px;
+    width: 380px;
 }
 .img {
     width: 120px;
+    margin-bottom: 0;
 }
 .item {
-    text-align: center;
-    background: rgba(137, 61, 4, 0.8);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.4);
     margin: 6px;
-    padding: 0;
-    padding-top: 15px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: #555 5px 5px 5px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 .add-btn, .sub-btn {
-    display: inline-block;
-    padding: 5px 10px;
+    text-align: center;
+    background: #d7421a;
+    margin: 6px;
     border: none;
-    background: brown;
-    border-radius: 10px;
-    color: #FFF;
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: background .2s linear;
-    margin-top: 3px;
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    font-size: 20px;
+    margin-top: 10px;
 }
 .usercard {
     text-align: center;
 }
 .name {
-    font-size: 12px;
-    font-family: 'FontName Thin';
-    color: white;
+    font-size: 30px;
+    font-family: 'FontName Medium';
+    font-weight: 600;
+    color: #d7421a ;
+    /*text-decoration: underline;*/
 }
 .value {
     color: white;
+    margin-top: 10px;
+    text-shadow: #A0A0A0CD 1px 1px 1px;
+}
+.title {
+    text-align: center;
+    color: #FFF;
+    font-family: 'FontName Medium';
+    font-weight: 600;
+    font-size: 20px;
+    text-shadow: #A0A0A0CD 1px 1px 1px;
+    margin: 10px;
+}
+.area
+{
+    max-width: 380px;
+    min-width: 380px;
+    margin: 0;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    height: 100vh;
+}
+.textarea {
+    border: none;
+    border-radius: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: #555 5px 5px 5px;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    display: grid;
+    width: 338px;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
 }

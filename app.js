@@ -2,101 +2,48 @@ var tg = window.Telegram.WebApp;
 
 tg.expand();
 tg.MainButton.textColor = "#FFF";
-tg.MainButton.color = "#703f05";
+tg.MainButton.show();
+tg.MainButton.setText('Добавить отзыв')
 
-let item = '';
+let str = "";
 
-let products = [
-    ['Пирожок с картошкой', 40],
-    ['Сосиска в тесте', 50],
-    ['Очпочмак', 57],
-    ['Круассан', 56],
-    ['Пицца ❤️', 53],
+let feedbacks = [
+    ['Иван Ожиганов', 'Очпочмаки простой кайф, каждый день бы их ел...'],
+    ['Эмиль Айдарович', 'Спасибо, тем, кто придумал этого бота, теперь не надо бежать каждую перемену в столовку'],
+    ['Амир Бакиров', '10/10. А что еще сказать?'],
 ]
 
-str = "";
-
-for(let i = 0; i < products.length; i++)
+for(let i = 0; i < feedbacks.length; i++)
 {
-    str += "<div class=\"item btn\">\n" +
-        "                <img src=\"img"+(i+1)+".png\" alt=\"\" class=\"img\">\n" +
+    str += "<div class=\"item\">\n" +
+        "                <span class='name'>"+feedbacks[i][0]+"</span>\n" +
         "                <br />\n" +
-        "                <span class='name'>"+products[i][0]+" | "+products[i][1]+" руб.</span>\n" +
-        "                <br />\n" +
-        "                <button class=\"sub-btn\" style=\"display: none\">-</button>\n" +
-        "                <span style=\"display: none;\" class=\"value\">0</span>\n" +
-        "                <button class=\"add-btn\">Добавить</button>\n" +
+        "                <div style=\"\" class=\"value\">"+feedbacks[i][1]+"</div>\n" +
         "            </div>"
 }
 document.getElementById('inner').innerHTML = str;
+console.log(str);
 
-let product = [];
-product.length = products.length;
-for(let j = 0; j < product.length; j++)
-{
-    product[j] = 0;
-}
-
-let addBtn = document.getElementsByClassName('add-btn');
-let subBtn = document.getElementsByClassName('sub-btn');
-let value = document.getElementsByClassName('value');
-let btn = document.getElementsByClassName('btn');
-for(let i = 0; i < addBtn.length; i++)
-{
-    addBtn[i].onclick = function (){
-        product[i]++;
-        addBtn[i].innerHTML = "+";
-        subBtn[i].style.display = "";
-        value[i].style.display = "";
-        value[i].innerHTML = product[i];
-        let sum = 0;
-        for(let j = 0; j < product.length; j++)
-        {
-            sum += product[j];
-        }
-        if(!sum && tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        } else {
-            let val = 0;
-            for (let j = 0; j < product.length; j++) val += product[j]*products[j][1];
-            tg.MainButton.setText("Выбрано товаров: " + sum + " | Итого:" + val + " руб.");
-            console.log("Итого:" + val + " руб.");
-            if(!tg.MainButton.isVisible) tg.MainButton.show();
-        }
-    };
-    subBtn[i].onclick = function () {
-        product[i]--;
-        value[i].innerHTML = product[i];
-        if (!product[i]) {
-            addBtn[i].innerHTML = "Добавить";
-            subBtn[i].style.display = "none";
-            value[i].style.display = "none";
-        }
-        let sum = 0;
-        for(let j = 0; j < product.length; j++)
-        {
-            sum += product[j];
-        }
-        if(!sum && tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        } else {
-            let val = 0;
-            for (let j = 0; j < product.length; j++) val += product[j]*products[j][1];
-            tg.MainButton.setText("Выбрано товаров: " + sum + " | Итого:" + val + " руб.");
-            console.log("Итого:" + val + " руб.");
-            if(!tg.MainButton.isVisible) tg.MainButton.show();
-        }
-    };
-}
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    tg.sendData(product);
-    //при клике на основную кнопку отправляем данные в строковом виде
+    tg.MainButton.hide();
+    document.getElementById('inner').style.display = 'none';
+    document.getElementById('area').style.display = 'none';
+    document.getElementById('send').onclick = function () {
+        feedbacks[feedbacks.length] = [
+            `${tg.initDataUnsafe.user.first_name}`+ " " +`${tg.initDataUnsafe.user.last_name}`,
+            document.getElementById('text-area').value,
+        ];
+        str = "";
+        for(let i = 0; i < feedbacks.length; i++)
+        {
+            str += "<div class=\"item\">\n" +
+                "                <span class='name'>"+feedbacks[i][0]+"</span>\n" +
+                "                <br />\n" +
+                "                <div style=\"\" class=\"value\">"+feedbacks[i][1]+"</div>\n" +
+                "            </div>"
+        }
+        document.getElementById('inner').innerHTML = str;
+        document.getElementById('inner').style.display = '';
+        document.getElementById('area').style.display = 'none';
+    }
 });
-
-
-let usercard = document.getElementById('usercard');
-
-let p = document.createElement('p');
-p.innerText = `${tg.initDataUnsafe.user.first_name}` +
-    `${tg.initDataUnsafe.user.last_name}`
-usercard.appendChild(p);

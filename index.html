@@ -2,19 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="style.css">
-
+    <!-- include libraries(jQuery, bootstrap) -->
     <title>Document</title>
 </head>
 <body>
     <div class="container">
+<!--        <h1 class="title">Отзывы</h1>-->
         <div class="inner" id="inner">
 
         </div>
     </div>
+    <div class="area" id="area" style="display: none;">
+        <span class="name" style="color: #d7421a; margin-left: 10px;">Добавить отзыв</span>
+        <textarea class="textarea" id="text-area"></textarea>
+        <button class="add-btn" id="send">Отправить</button>
+    </div>
     <div class="usercard" id="usercard"></div>
-
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="app.js"></script>
