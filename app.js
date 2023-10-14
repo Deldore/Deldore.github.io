@@ -27,7 +27,7 @@ console.log(str);
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
     tg.MainButton.hide();
     document.getElementById('inner').style.display = 'none';
-    document.getElementById('area').style.display = 'none';
+    document.getElementById('area').style.display = '';
     document.getElementById('send').onclick = function () {
         feedbacks[feedbacks.length] = [
             `${tg.initDataUnsafe.user.first_name}`+ " " +`${tg.initDataUnsafe.user.last_name}`,
