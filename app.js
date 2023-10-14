@@ -7,7 +7,9 @@ tg.MainButton.setText('Добавить отзыв')
 
 let str = "";
 let feedbacks = [
-    ['emil', 'text'],
+    ['Иван Ожиганов', 'Очпочмаки простой кайф, каждый день бы их ел...'],
+    ['Эмиль Айдарович', 'Спасибо, тем, кто придумал этого бота, теперь не надо бежать каждую перемену в столовку'],
+    ['Амир Бакиров', '10/10. А что еще сказать?'],
 ];
 
 for(let i = 0; i < feedbacks.length; i++)
@@ -32,6 +34,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
             `${tg.initDataUnsafe.user.first_name}`+ " " +`${tg.initDataUnsafe.user.last_name}`,
             document.getElementById('text-area').value,
         ];
+        document.getElementById('text-area').value = "";
         str = "";
         for(let i = 0; i < feedbacks.length; i++)
         {
