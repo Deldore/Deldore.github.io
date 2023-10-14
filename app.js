@@ -7,11 +7,7 @@ tg.MainButton.setText('Добавить отзыв')
 
 let str = "";
 
-let feedbacks = [
-    ['Иван Ожиганов', 'Очпочмаки простой кайф, каждый день бы их ел...'],
-    ['Эмиль Айдарович', 'Спасибо, тем, кто придумал этого бота, теперь не надо бежать каждую перемену в столовку'],
-    ['Амир Бакиров', '10/10. А что еще сказать?'],
-]
+let feedbacks = JSON.parse(localStorage.getItem('feedback'));
 
 for(let i = 0; i < feedbacks.length; i++)
 {
@@ -23,6 +19,8 @@ for(let i = 0; i < feedbacks.length; i++)
 }
 document.getElementById('inner').innerHTML = str;
 console.log(str);
+let data = JSON.stringify(feedbacks);
+console.log(data);
 
 Telegram.WebApp.onEvent('mainButtonClicked', function(){
     tg.MainButton.hide();
@@ -45,5 +43,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function(){
         document.getElementById('inner').innerHTML = str;
         document.getElementById('inner').style.display = '';
         document.getElementById('area').style.display = 'none';
+        tg.MainButton.show();
+        localStorage.setItem('feedback', JSON.stringify(feedbacks));
     }
 });
